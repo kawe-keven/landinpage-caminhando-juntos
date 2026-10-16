@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caminhando Juntos — Caminhe, acumule pontos, jogue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F8F6;--surface:#FFFFFF;--ink:#14283A;--muted:#47606F;--green:#1F7A4D;--green-ink:#FFFFFF;--sun:#F2B632;--sun-ink:#14283A;--line:#CFDDD6;--tint:#E3F0E9;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1C26;--surface:#172A38;--ink:#EAF2EE;--muted:#A9BDC6;--green:#4FC184;--green-ink:#0F1C26;--sun:#F2B632;--sun-ink:#14283A;--line:#2A4150;--tint:#15303A}}
+:root[data-theme="dark"]{--bg:#0F1C26;--surface:#172A38;--ink:#EAF2EE;--muted:#A9BDC6;--green:#4FC184;--green-ink:#0F1C26;--sun:#F2B632;--sun-ink:#14283A;--line:#2A4150;--tint:#15303A}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 19px/1.65 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.1;margin:0 0 .5em}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800}
+h3{font-size:1.3rem;font-weight:600}
+p{margin:0 0 1em;max-width:68ch}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:2px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;gap:8px 22px;flex-wrap:wrap;align-items:center;padding-top:10px;padding-bottom:10px}
+nav b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.15rem;margin-right:auto}
+nav a{text-decoration:none;font-weight:700;padding:6px 4px;border-bottom:3px solid transparent}
+nav a:hover{border-color:var(--sun)}
+.hero{padding:56px 0 40px;display:grid;gap:30px;grid-template-columns:1.15fr .85fr;align-items:center}
+.hero p{font-size:1.25rem}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;padding:16px 26px;border-radius:14px;font-weight:700;text-decoration:none;background:var(--green);color:var(--green-ink);min-height:56px}
+.btn.alt{background:var(--sun);color:var(--sun-ink)}
+.trail{width:100%;height:auto}
+section{padding:56px 0;border-top:2px solid var(--line)}
+.lead{font-size:1.2rem;color:var(--muted)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin:24px 0}
+.box{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:22px}
+.box h3{margin-bottom:.4em}
+.box p:last-child{margin-bottom:0}
+.tag{display:inline-block;background:var(--tint);border-radius:999px;padding:2px 12px;font-size:.9rem;font-weight:700;margin-bottom:10px}
+.tbl{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;min-width:560px;background:var(--surface)}
+th,td{text-align:left;padding:12px 14px;border:2px solid var(--line);vertical-align:top}
+th{background:var(--tint)}
+.verdict{background:var(--green);color:var(--green-ink);border-radius:18px;padding:26px;margin-top:24px}
+.verdict h3{margin-bottom:.3em}
+.verdict p{margin:0}
+.note{font-size:.95rem;color:var(--muted)}
+ul{padding-left:1.2em;margin:0 0 1em}
+li{margin-bottom:.4em}
+.road{list-style:none;padding:0;margin:26px 0;border-left:6px solid var(--green)}
+.road li{position:relative;margin:0 0 22px;padding:0 0 0 26px}
+.road li::before{content:"";position:absolute;left:-14px;top:8px;width:22px;height:22px;border-radius:50%;background:var(--sun);border:4px solid var(--bg)}
+.road .when{font-weight:700;color:var(--green)}
+details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:12px}
+summary{cursor:pointer;padding:16px 20px;font-weight:700;font-size:1.1rem;min-height:56px}
+details>div{padding:0 20px 8px}
+footer{padding:36px 0 56px;border-top:2px solid var(--line);color:var(--muted)}
+@media (max-width:760px){.hero{grid-template-columns:1fr;padding-top:34px}body{font-size:18px}}
+@media (prefers-reduced-motion:no-preference){.walker{animation:walk 9s ease-in-out infinite alternate}}
+@keyframes walk{from{transform:translate(0,0)}to{transform:translate(250px,-92px)}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>Caminhando Juntos</b><a href="#viabilidade">Viabilidade</a><a href="#governanca">Governança</a><a href="#roadmap">Roadmap</a><a href="#ia">Inteligência</a></div></nav>
+
+<header class="wrap hero">
+<div>
+<h1>Cada passo vira ponto. Cada ponto vira diversão.</h1>
+<p>Um aplicativo para pessoas com 50 anos ou mais caminharem com segurança, acumularem pontos e trocá-los por prêmios nos jogos que já gostam, como Candy Crush e outros passatempos.</p>
+<div class="btns"><a class="btn" href="#viabilidade">Ver o estudo de viabilidade</a><a class="btn alt" href="#roadmap">Ver o roadmap</a></div>
+</div>
+<svg class="trail" viewBox="0 0 400 320" role="img" aria-label="Trilha de caminhada com marcos de pontos">
+<path d="M30 290 C120 290 80 190 170 190 S 250 90 370 40" fill="none" stroke="var(--green)" stroke-width="14" stroke-linecap="round" stroke-dasharray="2 26"/>
+<circle cx="170" cy="190" r="22" fill="var(--sun)"/><text x="170" y="197" text-anchor="middle" font-size="20" font-weight="700" fill="#14283A">5k</text>
+<circle cx="370" cy="40" r="26" fill="var(--green)"/><text x="370" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="var(--green-ink)">★</text>
+<g class="walker"><circle cx="50" cy="270" r="16" fill="var(--ink)"/><text x="50" y="277" text-anchor="middle" font-size="18" fill="var(--bg)">+1</text></g>
+</svg>
+</header>
+
+<main>
+<section id="viabilidade"><div class="wrap">
+<h2>Estudo de viabilidade</h2>
+<p class="lead">Conclusão resumida: a ideia é viável como piloto enxuto, desde que a parceria com os jogos seja validada antes de qualquer investimento maior.</p>
+
+<h3>1. Mercado</h3>
+<div class="grid">
+<div class="box"><p><b>Público</b></p><p>O Censo 2022 contou cerca de 32 milhões de pessoas com 60 anos ou mais no Brasil. A faixa de 50 a 59 amplia o público e é a que mais usa smartphone.</p></div>
+<div class="box"><p><b>Problema</b></p><p>Sedentarismo, isolamento social e pouca motivação para manter uma rotina de caminhada.</p></div>
+<div class="box"><p><b>Oportunidade</b></p><p>Jogos casuais já fazem parte da rotina desse público. O app liga uma atividade saudável a algo que a pessoa já gosta.</p></div>
+</div>
+
+<h3>2. Como o projeto se sustenta</h3>
+<div class="tbl"><table>
+<thead><tr><th>Fonte</th><th>Como funciona</th><th>Risco</th></tr></thead>
+<tbody>
+<tr><td>Patrocínio de saúde</td><td>Planos de saúde, farmácias e prefeituras pagam por usuários mais ativos.</td><td>Ciclo de venda longo</td></tr>
+<tr><td>Parceria com jogos</td><td>Estúdios pagam por novos jogadores 50+ ou fornecem créditos e itens para os prêmios.</td><td>Alto: parceria ainda não existe</td></tr>
+<tr><td>Comércio local</td><td>Descontos em lojas do bairro trocados por pontos.</td><td>Baixo</td></tr>
+<tr><td>Plano familiar</td><td>Filhos pagam um plano com acompanhamento e alertas.</td><td>Médio</td></tr>
+</tbody></table></div>
+
+<h3>3. Custo do piloto (estimativa)</h3>
+<ul>
+<li>Equipe mínima: 1 pessoa de front-end, 1 de back-end, 1 de design e acessibilidade.</li>
+<li>Infraestrutura: nuvem de baixo custo para até 1.000 usuários.</li>
+<li>Prêmios: o maior custo variável. A meta é um prêmio custar menos que o valor pago pelo patrocinador por usuário ativo.</li>
+</ul>
+<p class="note">Valores em reais devem ser levantados com cotações reais antes de apresentar a investidores. Os números acima são hipóteses de trabalho, não resultados medidos.</p>
+
+<h3>4. Principais riscos</h3>
+<div class="grid">
+<div class="box"><span class="tag">Alto</span><h3>Parceria com jogos</h3><p>Candy Crush e outros jogos têm donos e regras próprias. Não prometa um prêmio específico antes de ter acordo ou um revendedor autorizado de créditos.</p></div>
+<div class="box"><span class="tag">Alto</span><h3>Fraude de passos</h3><p>Balançar o celular ou usar aplicativos falsos. Exige validação por sensores e limites diários.</p></div>
+<div class="box"><span class="tag">Médio</span><h3>Segurança física</h3><p>O app não pode empurrar ninguém a caminhar além do que consegue. Precisa de metas suaves e avisos de calor.</p></div>
+<div class="box"><span class="tag">Médio</span><h3>Uso do app</h3><p>Se a tela for difícil, o público desiste. Testes com idosos reais fazem parte do projeto.</p></div>
+</div>
+
+<div class="verdict"><h3>Veredito</h3><p>Seguir com um piloto de 3 meses em uma cidade, com 100 a 300 pessoas, usando prêmios simples (créditos de jogo comprados de revendedor autorizado e descontos de comércio local) enquanto a parceria oficial é negociada. O piloto mede três coisas: quantas pessoas continuam caminhando depois de 4 semanas, quanto custa cada prêmio e se algum patrocinador aceita pagar.</p></div>
+</div></section>
+
+<section id="governanca"><div class="wrap">
+<h2>Política de governança</h2>
+<p class="lead">Regras para proteger quem usa o app, principalmente porque ele lida com dados de saúde e com pessoas que podem ser alvo de golpes.</p>
+
+<details open><summary>Princípios</summary><div>
+<ul>
+<li><b>Segurança primeiro:</b> nenhuma meta ou prêmio pode incentivar esforço perigoso.</li>
+<li><b>Transparência:</b> a pessoa sabe quais dados são coletados, para que servem e quanto vale cada ponto.</li>
+<li><b>Autonomia:</b> a pessoa decide o que compartilhar e pode sair do app a qualquer momento.</li>
+<li><b>Acessibilidade:</b> letras grandes, alto contraste e linguagem simples em todas as telas.</li>
+</ul></div></details>
+
+<details><summary>Dados pessoais e LGPD</summary><div>
+<ul>
+<li>Dados de passos, localização e saúde são tratados como sensíveis, com consentimento específico e separado dos termos gerais.</li>
+<li>Coleta mínima: contar passos não exige guardar o trajeto exato. Localização precisa só é usada durante a caminhada, se a pessoa permitir.</li>
+<li>Direitos do titular (acesso, correção, exclusão, portabilidade) atendidos por um botão dentro do app, sem burocracia.</li>
+<li>As conversas com o chatbot também são dados pessoais: ficam sob as mesmas regras de consentimento, retenção limitada e exclusão.</li>
+<li>Dados nunca são vendidos. Patrocinadores recebem apenas números agregados e anônimos.</li>
+<li>Um encarregado de dados (DPO) é nomeado antes do lançamento público.</li>
+<li>Vazamento de dados: aviso à autoridade e às pessoas afetadas nos prazos da lei.</li>
+</ul></div></details>
+
+<details><summary>Segurança e saúde</summary><div>
+<ul>
+<li>Primeira tela recomenda conversar com um médico antes de começar. O app não faz diagnóstico nem substitui orientação médica.</li>
+<li>Limite diário de passos que geram pontos, para ninguém caminhar demais por causa do prêmio.</li>
+<li>Alertas de calor, chuva e horário de pouca luz.</li>
+<li>Botão SOS sempre visível, com ligação direta para os números cadastrados pela própria pessoa. A pessoa pode editar a lista a qualquer momento e o app guarda esses números só para esse fim.</li>
+</ul></div></details>
+
+<details><summary>Pontos, prêmios e antifraude</summary><div>
+<ul>
+<li>Pontos não são dinheiro, não têm valor garantido e podem ter validade informada com clareza.</li>
+<li>Regras de troca escritas em linguagem simples e mostradas antes de cada resgate.</li>
+<li>Sem mecânicas de aposta, sorteio pago ou compra de pontos.</li>
+<li>Passos validados por sensores do aparelho, com detecção de padrões artificiais. Contas suspeitas passam por revisão humana antes de qualquer punição.</li>
+<li>Avisos contra golpes: o app nunca pede senha, código ou dinheiro por mensagem.</li>
+</ul></div></details>
+
+<details><summary>Responsabilidades e decisões</summary><div>
+<ul>
+<li><b>Produto:</b> define metas, regras de pontos e prêmios.</li>
+<li><b>Tecnologia:</b> segurança, disponibilidade e antifraude.</li>
+<li><b>Encarregado de dados:</b> privacidade e atendimento às pessoas.</li>
+<li><b>Conselho consultivo:</b> geriatra ou educador físico, representante de pessoas idosas e advogado, que revisam regras a cada 6 meses.</li>
+<li>Mudanças de regras são avisadas no app com antecedência e registradas em um histórico público.</li>
+</ul></div></details>
+<p class="note">Este é um modelo de política para o projeto. Antes do lançamento, revise-o com um advogado de proteção de dados.</p>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+<h2>Roadmap do produto</h2>
+<p class="lead">Do piloto à operação em escala, em quatro fases. As datas são metas e dependem de equipe e financiamento.</p>
+<ol class="road">
+<li><div class="when">Fase 1 · Meses 0 a 3 · Fundamentos</div><h3>Piloto mínimo</h3><p>Contador de passos, pontos, tela de prêmios, cadastro simples e testes de usabilidade com idosos. Termos e consentimento da LGPD prontos.</p></li>
+<li><div class="when">Fase 2 · Meses 4 a 6 · Primeiros prêmios</div><h3>Troca por prêmios</h3><p>Resgate de créditos de jogos via revendedor autorizado, descontos de comércio local, antifraude básico, botão SOS com ligação direta e chatbot de ajuda por texto. Primeiro grupo de 100 a 300 pessoas.</p></li>
+<li><div class="when">Fase 3 · Meses 7 a 10 · Comunidade</div><h3>Caminhar junto</h3><p>Grupos de caminhada, desafios entre amigos, painel para familiares e primeiros patrocinadores de saúde.</p></li>
+<li><div class="when">Fase 4 · Meses 11 a 18 · Escala</div><h3>Crescimento</h3><p>Parceria oficial com estúdios de jogos, painel de dados anônimos para parceiros, expansão para outras cidades e para o Android e iOS completos.</p></li>
+</ol>
+</div></section>
+
+<section id="ia"><div class="wrap">
+<h2>Funcionalidades de inteligência: o chatbot</h2>
+<p class="lead">A inteligência do app é entregue por um chatbot. A pessoa conversa por texto ou voz, em linguagem simples, e o chatbot ajuda com metas, segurança e prêmios, nunca para pressionar.</p>
+<div class="grid">
+<div class="box"><span class="tag">Fase 2</span><h3>Meta combinada na conversa</h3><p>O chatbot pergunta como a pessoa está se sentindo e propõe a meta do dia, com aumento gradual e pausas em dias de descanso.</p></div>
+<div class="box"><span class="tag">Fase 2</span><h3>Tira-dúvidas sobre pontos</h3><p>Explica o saldo, as regras de troca e os prêmios disponíveis, e avisa a pessoa sobre tentativas de golpe.</p></div>
+<div class="box"><span class="tag">Fase 3</span><h3>Avisos de segurança</h3><p>O chatbot manda mensagens sobre clima e horário, sugere o melhor momento de caminhar e avisa quando é melhor ficar em casa.</p></div>
+<div class="box"><span class="tag">Fase 3</span><h3>Conversa por voz</h3><p>A pessoa fala em vez de digitar, e o chatbot responde em voz alta, o que ajuda quem tem dificuldade de leitura ou de digitação.</p></div>
+<div class="box"><span class="tag">Fase 3</span><h3>Prêmios que combinam</h3><p>O chatbot sugere jogos e descontos de acordo com o que a pessoa já escolheu, sem usar dados de saúde para isso.</p></div>
+<div class="box"><span class="tag">Fase 2</span><h3>Botão SOS</h3><p>Um botão grande, sempre visível durante a caminhada, que liga direto para os números cadastrados pela própria pessoa, na ordem que ela escolher. Se o primeiro não atender, o app tenta o próximo. Funciona fora do chatbot, para não depender dele em uma emergência.</p></div>
+</div>
+<h3>Regras para o chatbot</h3>
+<ul>
+<li>O chatbot se identifica como um robô, não como uma pessoa.</li>
+<li>As conversas enviadas à nuvem não levam nome, localização exata nem dados de saúde identificáveis, e a pessoa pode apagar o histórico quando quiser.</li>
+<li>Toda decisão automática que afeta pontos pode ser revista por uma pessoa.</li>
+<li>O chatbot não dá conselho médico e sempre indica procurar um profissional em caso de dor, tontura ou mal-estar.</li>
+<li>O chatbot é testado com pessoas de idades, ritmos e condições diferentes para evitar tratar alguém de forma injusta.</li>
+</ul>
+</div></section>
+</main>
+
+<footer><div class="wrap"><p><b>Caminhando Juntos</b> — documento de planejamento. Estimativas e prazos são hipóteses a validar no piloto. Nomes de jogos citados pertencem aos seus donos e não indicam parceria existente.</p></div></footer>
+</body>
+</html>
